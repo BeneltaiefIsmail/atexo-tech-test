@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -15,8 +16,8 @@ public class RegistrantDtoResponse {
     private String lastName;
     private LocalDate birthDate;
     private String uniqueIdentifier;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public static RegistrantDtoResponse fromEntity (Registrant registrant) {
 
@@ -29,8 +30,8 @@ public class RegistrantDtoResponse {
                     .lastName(registrant.getLastName())
                     .birthDate(registrant.getDateOfBirth())
                     .uniqueIdentifier(registrant.getUniqueIdentifier())
-                    .createdAt(LocalDate.from(registrant.getCreatedAt()))
-                    .updatedAt(LocalDate.from(registrant.getUpdatedAt()))
+                    .createdAt(registrant.getCreatedAt())
+                    .updatedAt(registrant.getUpdatedAt())
                     .build();
         }
     }
