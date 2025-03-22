@@ -35,7 +35,7 @@ public class RegistrantServiceImpl implements RegistrantService {
 
     @Override
     @Transactional
-    public RegistrantDtoResponse updateSubscriberById(Long id, RegistrantDtoRequest registrantDtoRequest) {
+    public RegistrantDtoResponse updateRegistrantById(Long id, RegistrantDtoRequest registrantDtoRequest) {
         Registrant existingRegistrant = registrantRepository.findById(id).
                 orElseThrow(()-> new EntityNotFoundException("Student not found : " + id ));
         existingRegistrant.setFirstName(registrantDtoRequest.getFirstName());
@@ -46,19 +46,19 @@ public class RegistrantServiceImpl implements RegistrantService {
     }
 
     @Override
-    public Page<RegistrantDtoResponse> getAllSubscribers(Pageable pageable) {
+    public Page<RegistrantDtoResponse> getAllRegistrants(Pageable pageable) {
         return registrantRepository.findAll(pageable).map(RegistrantDtoResponse::fromEntity);
     }
 
     @Override
-    public RegistrantDtoResponse getSubscriberById(Long id) {
+    public RegistrantDtoResponse getRegistrantById(Long id) {
         return registrantRepository.findById(id).map(RegistrantDtoResponse::fromEntity).
                 orElseThrow(()-> new EntityNotFoundException("Student not found : " + id ));
     }
 
     @Override
     @Transactional
-    public RegistrantDtoResponse deleteSubscriberById(Long id) {
+    public RegistrantDtoResponse deleteRegistrantById(Long id) {
         Registrant existingRegistrant = registrantRepository.findById(id).
                 orElseThrow(()-> new EntityNotFoundException("Student not found : " + id ));
         registrantRepository.delete(existingRegistrant);
