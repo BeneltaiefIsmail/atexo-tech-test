@@ -32,7 +32,7 @@ public class CriteriaConfigDtoResponse {
                     .prefix(entity.getPrefix())
                     .suffix(entity.getSuffix())
                     .dateFormat(entity.getDateFormat())
-                    .order(entity.getOrder())
+                    .order(entity.getPriorityOrder())
                     .initialValue(entity.getInitialValue())
                     .createdAt(entity.getCreatedAt())
                     .updatedAt(entity.getUpdatedAt())

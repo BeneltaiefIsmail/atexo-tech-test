@@ -23,7 +23,7 @@ public class CriteriaConfig extends AbstractEntity {
     private String prefix ;
     private String suffix ;
     private String dateFormat ;
-    private Integer order ;
+    private Integer priorityOrder ;
     private Integer initialValue ;
 
 }

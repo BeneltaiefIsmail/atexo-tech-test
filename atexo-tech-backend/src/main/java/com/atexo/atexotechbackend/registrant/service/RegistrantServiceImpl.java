@@ -45,6 +45,7 @@ public class RegistrantServiceImpl implements RegistrantService {
         existingRegistrant.setFirstName(registrantDtoRequest.getFirstName());
         existingRegistrant.setLastName(registrantDtoRequest.getLastName());
         existingRegistrant.setDateOfBirth(registrantDtoRequest.getBirthDate());
+        existingRegistrant.setUniqueIdentifier(registrantDtoRequest.getUniqueIdentifier());
         registrantRepository.save(existingRegistrant);
         return RegistrantDtoResponse.fromEntity(existingRegistrant);
     }

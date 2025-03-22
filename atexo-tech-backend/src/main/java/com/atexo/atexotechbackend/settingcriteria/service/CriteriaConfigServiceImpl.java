@@ -12,6 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * Service implementation for Criteria Rules CRUD operations.
+ */
 @Slf4j
 @Service
 public class CriteriaConfigServiceImpl implements CriteriaConfigService {
@@ -20,9 +24,8 @@ public class CriteriaConfigServiceImpl implements CriteriaConfigService {
 
 
     @Autowired
-    public CriteriaConfigServiceImpl(CriteriaConfigRepository criteriaConfigRepository, CriteriaConfigService criteriaConfigService) {
+    public CriteriaConfigServiceImpl(CriteriaConfigRepository criteriaConfigRepository) {
         this.criteriaConfigRepository = criteriaConfigRepository;
-
     }
 
 
@@ -85,7 +88,7 @@ public class CriteriaConfigServiceImpl implements CriteriaConfigService {
         entity.setPrefix(dto.getPrefix());
         entity.setSuffix(dto.getSuffix());
         entity.setDateFormat(dto.getDateFormat());
-        entity.setOrder(dto.getOrder());
+        entity.setPriorityOrder(dto.getOrder());
         entity.setInitialValue(dto.getInitialValue());
         return entity;
     }

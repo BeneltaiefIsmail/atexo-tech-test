@@ -15,6 +15,8 @@ public class RegistrantDtoResponse {
     private String lastName;
     private LocalDate birthDate;
     private String uniqueIdentifier;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 
     public static RegistrantDtoResponse fromEntity (Registrant registrant) {
 
@@ -27,6 +29,8 @@ public class RegistrantDtoResponse {
                     .lastName(registrant.getLastName())
                     .birthDate(registrant.getDateOfBirth())
                     .uniqueIdentifier(registrant.getUniqueIdentifier())
+                    .createdAt(LocalDate.from(registrant.getCreatedAt()))
+                    .updatedAt(LocalDate.from(registrant.getUpdatedAt()))
                     .build();
         }
     }

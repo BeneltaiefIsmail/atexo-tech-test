@@ -29,7 +29,7 @@ public class CriteriaConfigDtoRequest {
                     .prefix(dto.getPrefix())
                     .suffix(dto.getSuffix())
                     .dateFormat(dto.getDateFormat())
-                    .order(dto.getOrder())
+                    .priorityOrder(dto.getOrder())
                     .initialValue(dto.getInitialValue())
                     .build();
         }

@@ -12,9 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-/**
- * Service implementation for Criteria Rules CRUD operations.
- */
 @RestController
 @Slf4j
 @RequestMapping("/api/v1/CriteriaConfig")
