@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface RegistrationService {
-
     RegistrationDtoResponse create (RegistrationDtoRequest registrationDtoRequest);
     RegistrationDtoResponse update (Long id, RegistrationDtoRequest registrationDtoRequest);
     Page<RegistrationDtoResponse> findAll(Pageable pageable);

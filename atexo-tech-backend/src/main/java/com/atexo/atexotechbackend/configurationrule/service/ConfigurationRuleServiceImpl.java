@@ -24,28 +24,23 @@ import java.util.stream.Collectors;
 public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
 
     private final ConfigurationRuleRepository configurationRuleRepository;
-
-
     @Autowired
     public ConfigurationRuleServiceImpl(ConfigurationRuleRepository configurationRuleRepository) {
         this.configurationRuleRepository = configurationRuleRepository;
     }
-
-
     @Override
     @Transactional
     public void create(List<ConfigurationRuleDto> dtoRequest) {
         log.debug("Creating new criteria config");
         // delete the previous configuration ifExist
         configurationRuleRepository.deleteAll();
-        // converting and validation the configRules
+        // converting  the configRules
         List<ConfigurationRule> configurationRules = dtoRequest.stream()
                 .map(ConfigurationRuleDto::toEntity)
                 .collect(Collectors.toList());
         // 3. Save All (new config)
         configurationRuleRepository.saveAll(configurationRules);
     }
-
     @Override
     public ConfigRuleDtoResponse getById(Long id) {
         log.debug("searching criteriaConfig with id:  " + id);
@@ -53,14 +48,12 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
                 .map(ConfigRuleDtoResponse::fromEntity)
                 .orElseThrow(() -> new EntityNotFoundException("CriteriaConfig not found : " + id ));
     }
-
     @Override
     public Page<ConfigRuleDtoResponse> findAll (Pageable pageable) {
         log.debug("seraching all criteria configs with page");
         Page<ConfigurationRule> configPage = configurationRuleRepository.findAll(pageable);
         return configPage.map(ConfigRuleDtoResponse::fromEntity);
     }
-
     @Override
     @Transactional
     public ConfigRuleDtoResponse update (Long id, ConfigurationRuleDto dtoRequest) {
@@ -72,7 +65,6 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
         log.debug(" updated criteria config ID: " + id);
         return ConfigRuleDtoResponse.fromEntity(updatedConfig);
     }
-
     @Override
     @Transactional
     public ConfigRuleDtoResponse deleteById(Long id) {
@@ -81,9 +73,7 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
                         .orElseThrow(() -> new EntityNotFoundException("Criteria Config not found : " + id ));
         configurationRuleRepository.delete(configurationRule);
         return ConfigRuleDtoResponse.fromEntity(configurationRule);
-
     }
-
     /**
      *
      * @param dto CriteriaConfigDtoRequest qui contient l'entité a modifier
@@ -100,5 +90,4 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
         entity.setInitialValue(dto.getInitialValue());
         return entity;
     }
-
 }

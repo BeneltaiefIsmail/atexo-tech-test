@@ -11,11 +11,8 @@ import java.time.Instant;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponse> handelEntityNotFoundException (EntityNotFoundException ex , WebRequest request) {
-
-
         ErrorResponse response = new ErrorResponse();
         response.setUri(URI.create(""));
         response.setMessage(ex.getMessage());
@@ -24,5 +21,16 @@ public class GlobalExceptionHandler {
         response.setTitle("Entity not found");
         response.setInstance(URI.create(request.getDescription(false)));
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex , WebRequest request) {
+        ErrorResponse response = new ErrorResponse();
+        response.setUri(URI.create(""));
+        response.setMessage(ex.getMessage());
+        response.setTimestamp(Instant.now());
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setTitle("Bad request");
+        response.setInstance(URI.create(request.getDescription(false)));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }

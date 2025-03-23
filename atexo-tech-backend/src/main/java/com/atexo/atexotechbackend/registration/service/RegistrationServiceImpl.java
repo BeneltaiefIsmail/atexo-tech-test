@@ -43,7 +43,6 @@ public class RegistrationServiceImpl implements RegistrationService {
         log.debug("User persisted with ID:  " , newRegistration.getId());
         return RegistrationDtoResponse.fromEntity(newRegistration);
     }
-
     @Override
     @Transactional
     public RegistrationDtoResponse update (Long id, RegistrationDtoRequest registrationDtoRequest) {
@@ -56,18 +55,15 @@ public class RegistrationServiceImpl implements RegistrationService {
         registrationRepository.save(existingRegistration);
         return RegistrationDtoResponse.fromEntity(existingRegistration);
     }
-
     @Override
     public Page<RegistrationDtoResponse> findAll(Pageable pageable) {
         return registrationRepository.findAll(pageable).map(RegistrationDtoResponse::fromEntity);
     }
-
     @Override
     public RegistrationDtoResponse getById(Long id) {
         return registrationRepository.findById(id).map(RegistrationDtoResponse::fromEntity).
                 orElseThrow(()-> new EntityNotFoundException("Registrant not found : " + id ));
     }
-
     @Override
     @Transactional
     public RegistrationDtoResponse deleteById(Long id) {

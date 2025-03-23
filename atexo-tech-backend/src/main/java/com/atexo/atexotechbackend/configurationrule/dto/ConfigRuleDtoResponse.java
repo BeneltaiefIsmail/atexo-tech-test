@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class ConfigRuleDtoResponse {
-
     private Long id;
     private CriteriaType criteriaType;
     private Integer length;
@@ -20,7 +19,6 @@ public class ConfigRuleDtoResponse {
     private Integer initialValue;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
     public static ConfigRuleDtoResponse fromEntity(ConfigurationRule entity) {
         if (entity == null)
             return null;

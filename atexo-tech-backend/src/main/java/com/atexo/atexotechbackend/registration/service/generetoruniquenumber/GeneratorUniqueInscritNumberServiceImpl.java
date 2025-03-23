@@ -17,12 +17,10 @@ import java.util.List;
 public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueInscritNumberService {
 
     private final ConfigurationRuleRepository configurationRuleRepository;
-
     @Autowired
     public GeneratorUniqueInscritNumberServiceImpl(ConfigurationRuleRepository configurationRuleRepository) {
         this.configurationRuleRepository = configurationRuleRepository;
     }
-
     /**
      * @param param@return
      */
@@ -44,7 +42,6 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
         });
         return uniqueInscritNumber.toString();
     }
-
     /**
      *
      * @param configurationRule

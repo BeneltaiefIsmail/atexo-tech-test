@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class Registration extends AbstractEntity {
-
     private String firstName ;
     private String lastName ;
     private LocalDate dateOfBirth ;

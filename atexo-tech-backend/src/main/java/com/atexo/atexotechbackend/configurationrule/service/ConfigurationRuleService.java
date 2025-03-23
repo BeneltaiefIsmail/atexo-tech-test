@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ConfigurationRuleService {
-
         void create(List<ConfigurationRuleDto> dtoRequest);
         ConfigRuleDtoResponse getById(Long id);
         Page<ConfigRuleDtoResponse> findAll(Pageable pageable);

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ConfigurationRuleRepository extends JpaRepository<ConfigurationRule, Long> {
-
     @Query("SELECT c FROM ConfigurationRule c ORDER BY c.rank ASC")
     List<ConfigurationRule> findAllByOrderByRankAsc();
 }

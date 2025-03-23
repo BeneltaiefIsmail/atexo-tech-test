@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class RegistrationDtoResponse {
-
     private Long id ;
     private String firstName;
     private String lastName;
@@ -18,12 +17,7 @@ public class RegistrationDtoResponse {
     private String uniqueIdentifier;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
     public static RegistrationDtoResponse fromEntity (Registration registration) {
-
-        if (registration == null)
-            return null;
-        else {
             return RegistrationDtoResponse.builder()
                     .id(registration.getId())
                     .firstName(registration.getFirstName())
@@ -34,6 +28,4 @@ public class RegistrationDtoResponse {
                     .updatedAt(registration.getUpdatedAt())
                     .build();
         }
-    }
-
 }
