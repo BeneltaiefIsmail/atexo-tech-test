@@ -31,21 +31,17 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
         //
         //1- Load Configuration Rule Ordered By Rank
         //
-           List<ConfigurationRule> configurationRules = configurationRuleRepository.findAll();
+           List<ConfigurationRule> configurationRules = configurationRuleRepository.findAllByOrderByRankAsc();
            if  (configurationRules.isEmpty()) {
                return new UniqueNumberGeneratorException("No configuration rules found").toString();
            }
         //
-        //2- Initialize Return Variable
-        //
-         StringBuilder uniqueInscritNumber = new StringBuilder();
-        //
         //3- Generate Unique Inscrit Number
         //
+        StringBuilder uniqueInscritNumber = new StringBuilder();
         configurationRules.forEach(configurationRule -> {
             uniqueInscritNumber.append(checkRule (configurationRule , param));
         });
-
         return uniqueInscritNumber.toString();
     }
 
