@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -64,7 +65,6 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
             }
             default -> throw new UniqueNumberGeneratorException("the rule is unsupported" + configurationRule.getCriteriaType());
         }
-
      }
     /**
      *
@@ -77,15 +77,11 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
             return "";
         }
         int length = configurationRule.getLength();
-        String suffixe = configurationRule.getSuffix();
-        String prefixe = configurationRule.getPrefix();
-        //
+        String prefixe = Objects.toString(configurationRule.getPrefix(), "");
+        String suffixe = Objects.toString(configurationRule.getSuffix(), "");
         String firstNameTruncated = StringUtil.safeSubString(firstName, 0, length);
-        StringBuilder result = new StringBuilder();
-        result.append(suffixe).append(firstNameTruncated).append(suffixe);
-        return result.toString();
+         return prefixe + firstNameTruncated + suffixe;
     }
-
     /**
      *
      * @param lastName
@@ -97,15 +93,11 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
              return "";
          }
          int length = configurationRule.getLength();
-         String suffixe = configurationRule.getSuffix();
-         String prefixe = configurationRule.getPrefix();
-         //
+         String prefixe = Objects.toString(configurationRule.getPrefix(), "");
+         String suffixe = Objects.toString(configurationRule.getSuffix(), "");
          String lastNameTruncated = StringUtil.safeSubString (lastName , 0 , length) ;
-         StringBuilder result = new StringBuilder();
-         result.append(prefixe).append(lastNameTruncated).append(suffixe);
-         return result.toString();
+         return prefixe + lastNameTruncated + suffixe;
      }
-
     /**
      *
      * @param dateOfBirth
@@ -113,12 +105,15 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
      * @return
      */
      private String checkRuleDateOfBirth (LocalDate dateOfBirth , ConfigurationRule configurationRule) {
+         String dateFormat = configurationRule.getDateFormat();
+         if (dateFormat == null || dateFormat.isEmpty()) {
+             return "" ;
+         }
+         String prefix = Objects.toString(configurationRule.getPrefix(), "");
+         String suffix = Objects.toString(configurationRule.getSuffix(), "");
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern(configurationRule.getDateFormat());
-         return configurationRule.getPrefix()
-                 + dateOfBirth.format(formatter)
-                 + configurationRule.getSuffix();
+         return prefix + dateOfBirth.format(formatter) + suffix;
      }
-
     /**
      *
      * @param configurationRule
@@ -126,7 +121,6 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
      */
     // TODO
      private String checkRuleCounter ( ConfigurationRule configurationRule) {
-     //    String formattedCounter = String.format("%05d", counter.getAndIncrement());
          return configurationRule.getPrefix()
               //   + formattedCounter
                  + configurationRule.getSuffix();

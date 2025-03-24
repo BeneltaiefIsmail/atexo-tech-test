@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 
 @RestController
 @Slf4j
@@ -28,7 +30,7 @@ public class ConfigRuleController {
             @Valid @RequestBody ConfigurationRuleDtoRequest dtoRequest) {
         log.info("POST Request: Create new criteria config");
         configurationRuleService.create(dtoRequest.getConfigurationRuleDtos());
-        return ResponseEntity.ok().build();
+         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping("/{id}")
     public ResponseEntity<ConfigRuleDtoResponse> getById(
