@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Slf4j
-    @RequestMapping("/api/v1/registants")
+    @RequestMapping("/api/v1/registrations")
 @CrossOrigin(origins = "*")
 public class RegistrationController {
     private RegistrationService registrationService;
@@ -32,7 +32,6 @@ public class RegistrationController {
      * Create a new Registrant
      * @param registrationDtoRequest that contain the Registrant to Add
      * @return ResponseEntity with RegistrantDtoResponse with a status HTTP 201 (created)
-     *  a new
      */
     @PostMapping
     public ResponseEntity<RegistrationDtoResponse> create  (@Valid @RequestBody RegistrationDtoRequest registrationDtoRequest) {

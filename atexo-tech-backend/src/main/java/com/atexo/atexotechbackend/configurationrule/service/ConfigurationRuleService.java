@@ -11,7 +11,7 @@ public interface ConfigurationRuleService {
         void create(List<ConfigurationRuleDto> dtoRequest);
         ConfigRuleDtoResponse getById(Long id);
         Page<ConfigRuleDtoResponse> findAll(Pageable pageable);
-        ConfigRuleDtoResponse update(Long id, ConfigurationRuleDto dtoRequest);
+        //ConfigRuleDtoResponse update(Long id, ConfigurationRuleDto dtoRequest);
         ConfigRuleDtoResponse deleteById(Long id);
     }
 

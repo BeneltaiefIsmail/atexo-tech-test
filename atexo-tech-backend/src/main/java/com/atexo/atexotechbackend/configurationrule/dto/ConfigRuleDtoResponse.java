@@ -17,8 +17,6 @@ public class ConfigRuleDtoResponse {
     private String dateFormat;
     private Integer rank;
     private Integer initialValue;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     public static ConfigRuleDtoResponse fromEntity(ConfigurationRule entity) {
         if (entity == null)
             return null;
@@ -32,8 +30,6 @@ public class ConfigRuleDtoResponse {
                     .dateFormat(entity.getDateFormat())
                     .rank(entity.getRank())
                     .initialValue(entity.getInitialValue())
-                    .createdAt(entity.getCreatedAt())
-                    .updatedAt(entity.getUpdatedAt())
                     .build();
         }
     }
