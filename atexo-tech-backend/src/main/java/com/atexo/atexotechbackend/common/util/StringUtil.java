@@ -1,17 +1,14 @@
 package com.atexo.atexotechbackend.common.util;
 
 public class StringUtil {
-
-
     /**
      * Copies a range of characters.
-     *
      * @param str
      *          the string to process
      * @param start
-     *          the offset of the first character
+     *          the begin of the first character
      * @param end
-     *          the offset one past the last character
+     *          the final of the last caracter
      * @return a String containing the characters from start to end - 1
      */
     public static String safeSubString(String str, int start, int end) {
