@@ -1,18 +1,17 @@
-<div class="container mt-5">
+<div class="container mt-5" style="max-width: 900px;">
   <div class="card p-4 shadow">
     <h2 class="text-center mb-4">Formulaire d'Inscription</h2>
-    {{registrationForm.value | json }}
     <form [formGroup]="registrationForm" (ngSubmit)="saveRegisration()">
       <div class="mb-3">
-        <label for="nom" class="form-label">Nom</label>
+        <label for="nom" class="form-label">Nom :</label>
         <input type="text" id="nom" class="form-control" placeholder="Entrez votre nom"  formControlName="firstName" required>
       </div>
       <div class="mb-3">
-        <label for="prenom" class="form-label">Prénom</label>
+        <label for="prenom" class="form-label">Prénom : </label>
         <input type="text" id="prenom" class="form-control" placeholder="Entrez votre prénom"  formControlName="lastName" required>
       </div>
       <div class="mb-3">
-        <label for="dateNaissance" class="form-label">Date de Naissance</label>
+        <label for="dateNaissance" class="form-label">Date de Naissance : </label>
         <input type="date" id="dateNaissance" class="form-control"  formControlName="birthDate" required>
       </div>
       <button type="submit" class="btn btn-primary w-100" [disabled]="registrationForm.invalid">S'inscrire</button>

@@ -1,1 +1,132 @@
-<p>configuration-rules works!</p>
+<div class="container-fluid" style="max-width: 600px;">
+  <div class="shadow-sm p-4">
+    <h2 class="text-center mb-4 fw-bold">Configuration des Critères</h2>
+    <form [formGroup]="configurationForm" (ngSubmit)="saveConfiguration()">
+      <div class="accordion" id="accordionExample">
+
+        <!-- Critère Prénom -->
+        <div class="accordion-item mb-3">
+          <h2 class="accordion-header" id="headingPrenom">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrenom" aria-expanded="true" aria-controls="collapsePrenom">
+              <i class="fa fa-plus-circle me-2"></i> Paramétrage Critère Prénom
+            </button>
+          </h2>
+          <div id="collapsePrenom" class="accordion-collapse collapse" aria-labelledby="headingPrenom" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Longueur</span>
+                <input type="number" formControlName="prenomLongueur" class="form-control" placeholder="Ex: 3 ">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold"> Préfixe</span>
+                <input type="text" formControlName="prenomPrefixe" class="form-control" placeholder="Ex: -">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Suffixe</span>
+                <input type="text" formControlName="prenomSuffixe" class="form-control" placeholder="Ex: /">
+              </div>
+              <div class="input-group">
+                <span class="input-group-text fw-bold">Ordre</span>
+                <input type="number" formControlName="prenomOrdre" class="form-control" placeholder="Ex: 1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Critère Nom -->
+        <div class="accordion-item mb-3">
+          <h2 class="accordion-header" id="headingNom">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNom" aria-expanded="false" aria-controls="collapseNom">
+              <i class="fa fa-plus-circle me-2"></i> Paramétrage Critère Nom
+            </button>
+          </h2>
+          <div id="collapseNom" class="accordion-collapse collapse" aria-labelledby="headingNom" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Longueur</span>
+                <input type="number" formControlName="nomLongueur" class="form-control" placeholder="Ex: 50">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Suffixe</span>
+                <input type="text" formControlName="nomSuffixe" class="form-control" placeholder="Ex: Mr.">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Préfixe</span>
+                <input type="text" formControlName="nomPrefixe" class="form-control" placeholder="Ex: Jr.">
+              </div>
+              <div class="input-group">
+                <span class="input-group-text fw-bold">Ordre</span>
+                <input type="number" formControlName="nomOrdre" class="form-control" placeholder="Ex: 2">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Critère Date de Naissance -->
+        <div class="accordion-item mb-3">
+          <h2 class="accordion-header" id="headingDateNaissance">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDateNaissance" aria-expanded="false" aria-controls="collapseDateNaissance">
+              <i class="fa fa-plus-circle me-2"></i> Paramétrage Critère Date de Naissance
+            </button>
+          </h2>
+          <div id="collapseDateNaissance" class="accordion-collapse collapse" aria-labelledby="headingDateNaissance" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Format</span>
+                <input type="text" formControlName="dateNaissanceFormat" class="form-control" placeholder="Ex: YYYY-MM-DD">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Suffixe</span>
+                <input type="text" formControlName="dateNaissanceSuffixe" class="form-control" placeholder="Ex: /">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Préfixe</span>
+                <input type="text" formControlName="dateNaissancePrefixe" class="form-control" placeholder="Ex: DOB">
+              </div>
+              <div class="input-group">
+                <span class="input-group-text fw-bold">Ordre</span>
+                <input type="number" formControlName="dateNaissanceOrdre" class="form-control" placeholder="Ex: 3">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Critère Compteur -->
+        <div class="accordion-item mb-3">
+          <h2 class="accordion-header" id="headingCompteur">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompteur" aria-expanded="false" aria-controls="collapseCompteur">
+              <i class="fa fa-plus-circle me-2"></i> Paramétrage Critère Compteur
+            </button>
+          </h2>
+          <div id="collapseCompteur" class="accordion-collapse collapse" aria-labelledby="headingCompteur" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Longueur</span>
+                <input type="number" formControlName="compteurLongueur" class="form-control" placeholder="Ex: 10">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Suffixe</span>
+                <input type="text" formControlName="compteurSuffixe" class="form-control" placeholder="Ex: CNT">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Préfixe</span>
+                <input type="text" formControlName="compteurPrefixe" class="form-control" placeholder="Ex: #">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text fw-bold">Valeur Initiale</span>
+                <input type="number" formControlName="compteurValeurInitiale" class="form-control" placeholder="Ex: 1000">
+              </div>
+              <div class="input-group">
+                <span class="input-group-text fw-bold">Ordre</span>
+                <input type="number" formControlName="compteurOrdre" class="form-control" placeholder="Ex: 4">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bouton Submit -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary w-100" >Envoyer</button>
+      </div>
+    </form>
+  </div>
+</div>
