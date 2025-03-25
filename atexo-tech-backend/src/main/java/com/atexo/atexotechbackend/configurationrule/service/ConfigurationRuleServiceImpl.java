@@ -33,7 +33,7 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
     }
     @Override
     @Transactional
-    public void create(List<ConfigurationRuleDto> dtoRequest) {
+    public List<ConfigRuleDtoResponse> create(List<ConfigurationRuleDto> dtoRequest) {
         log.debug("Creating new criteria config");
         // delete the previous configuration ifExist
         // if there is any modification in the configuration we have to initialize the conter table
@@ -45,6 +45,7 @@ public class ConfigurationRuleServiceImpl implements ConfigurationRuleService {
                 .collect(Collectors.toList());
         // Save All (new config)
         configurationRuleRepository.saveAll(configurationRules);
+        return configurationRules.stream().map(ConfigRuleDtoResponse::fromEntity).collect(Collectors.toList());
     }
     @Override
     public Page<ConfigRuleDtoResponse> findAll (Pageable pageable) {

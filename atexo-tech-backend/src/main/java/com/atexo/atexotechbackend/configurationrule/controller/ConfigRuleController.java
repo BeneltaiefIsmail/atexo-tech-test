@@ -12,12 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
+import java.util.List;
 
 
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/Configuration-Rules")
+@RequestMapping("/api/v1/Configuration-rules")
 @CrossOrigin(origins = "*")
 public class ConfigRuleController {
     private final ConfigurationRuleService configurationRuleService;
@@ -26,11 +26,11 @@ public class ConfigRuleController {
         this.configurationRuleService = configurationRuleService;
     }
     @PostMapping
-    public ResponseEntity<Void> create(
+    public ResponseEntity<List<ConfigRuleDtoResponse>> create(
             @Valid @RequestBody ConfigurationRuleDtoRequest dtoRequest) {
         log.info("POST Request: Create new criteria config");
-        configurationRuleService.create(dtoRequest.getConfigurationRuleDtos());
-         return ResponseEntity.status(HttpStatus.CREATED).build();
+        List<ConfigRuleDtoResponse> configRuleDtoResponses=  configurationRuleService.create(dtoRequest.getConfigurationRuleDtos());
+         return new ResponseEntity<>(configRuleDtoResponses, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     public ResponseEntity<ConfigRuleDtoResponse> getById(
@@ -43,13 +43,6 @@ public class ConfigRuleController {
         log.info("GET Request: Searching All Criteria Config");
         return new ResponseEntity<>(configurationRuleService.findAll(pageable), HttpStatus.OK);
     }
-//    @PutMapping("/{id}")
-//    public ResponseEntity<ConfigRuleDtoResponse> update(
-//            @PathVariable Long id,
-//            @RequestBody ConfigurationRuleDto dtoRequest) {
-//        log.info("PUT Request: Update criteria config by ID: " + id);
-//        return ResponseEntity.ok(configRuleService.update(id, dtoRequest));
-//    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete (@PathVariable Long id) {
         log.info("DELETE Request: Delete criteria config with ID: " + id);

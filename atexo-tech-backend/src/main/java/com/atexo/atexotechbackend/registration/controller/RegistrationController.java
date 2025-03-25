@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.*;
  *  INFO : Pour le cas de test nosu avons besoin seulement de la méthode POST
  *  pour sauvegarder les données dans la base les autres méthode (GET/DELETE/GETALL/Update) => FOR purpose TEST
  */
+
 @RestController
 @Slf4j
-    @RequestMapping("/api/v1/registrations")
+@RequestMapping("/api/v1/registrations")
 @CrossOrigin(origins = "*")
 public class RegistrationController {
     private RegistrationService registrationService;
