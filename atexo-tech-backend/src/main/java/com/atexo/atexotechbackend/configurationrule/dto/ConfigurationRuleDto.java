@@ -14,7 +14,7 @@ import lombok.Data;
 public class ConfigurationRuleDto {
     @NotNull(message = "The criteria Type is mandatory")
     private CriteriaType criteriaType;
-    @Positive(message = "the length must be positive")
+    @Min(value = 0)
     private Integer length;
     @Size(max = 5, message = "the prefixe length is less than {max}")
     private String prefix;

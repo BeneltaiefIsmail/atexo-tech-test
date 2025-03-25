@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -99,7 +100,7 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
         String suffixe = Objects.toString(configurationRule.getSuffix(), "");
         String firstNameTruncated = StringUtil.safeSubString(firstName, 0, length);
         log.debug("firstNameTruncated: " + firstNameTruncated);
-        return prefixe + firstNameTruncated + suffixe;
+        return (prefixe + firstNameTruncated + suffixe).toUpperCase();
 
     }
     /**
@@ -121,7 +122,7 @@ public class GeneratorUniqueInscritNumberServiceImpl implements GeneratorUniqueI
          String suffixe = Objects.toString(configurationRule.getSuffix(), "");
          String lastNameTruncated = StringUtil.safeSubString (lastName , 0 , length) ;
          log.debug("lastNameTruncated: " + lastNameTruncated);
-         return prefixe + lastNameTruncated + suffixe;
+         return (prefixe + lastNameTruncated + suffixe).toUpperCase();
      }
 
     /**
