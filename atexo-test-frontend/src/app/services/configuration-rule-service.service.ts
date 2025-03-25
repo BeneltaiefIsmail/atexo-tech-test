@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ConfigurationRuleServiceService {
-  private apiUrl = 'http://localhost:8080/api/v1/Configuration-Rules';
+  private apiUrl = 'http://localhost:8080/api/v1/configuration-rules';
 
   constructor(private http: HttpClient) { }
 

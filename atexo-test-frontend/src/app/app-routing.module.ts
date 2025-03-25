@@ -6,8 +6,8 @@ import { ConfigurationRulesComponent } from './configuration-rules/configuration
 
 
 const routes: Routes = [
-  {path : "Inscription" , component : RegistrationComponent} ,
-  {path : "Configuration-rules" , component: ConfigurationRulesComponent }
+  {path : "inscription" , component : RegistrationComponent} ,
+  {path : "configuration-rules" , component: ConfigurationRulesComponent }
 ];
 
 @NgModule({

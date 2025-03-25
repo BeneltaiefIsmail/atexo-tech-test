@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/Configuration-rules")
+@RequestMapping("/api/v1/configuration-rules")
 @CrossOrigin(origins = "*")
 public class ConfigRuleController {
     private final ConfigurationRuleService configurationRuleService;
