@@ -17,5 +17,11 @@
       <button type="submit" class="btn btn-primary w-100" [disabled]="registrationForm.invalid">S'inscrire</button>
     </form>
   </div>
+
+  <!-- Message Flash - Alert Bootstrap -->
+  <div *ngIf="registrationResponse" class="alert alert-success alert-dismissible" role="alert">
+    <h4 class="alert-heading">Inscription réussie !</h4>
+    <p><strong>Votre Identifiant unique:</strong> {{ registrationResponse.uniqueIdentifier }}</p>
+  </div>
 </div>
 

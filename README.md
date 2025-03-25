@@ -75,8 +75,6 @@ chacun des critères posséde sa propore configuration (Longueur , suffixe , pre
 ![config4](images/ConfigCompteur.png)
 ### 3.Page d'inscription 
 ![inscription](images/inscription.png)
-### 4 - page de test génération ID avec POSTMAN
-![config3](images/TestRegistration.png)
-![config4](images/TestRegistration2.png)
-![config4](images/TestConfigApi.png)
-![config4](images/ModificationRuleCas2.png)
+### 4 - page de test génération ID FRONTEND 
+![inscription](images/InscriptionSucess.png)
+![inscription](images/InscriptionSucess2.png)

@@ -15,6 +15,7 @@ import {Registration} from '../model/registration';
 export class RegistrationComponent {
 
   registrationForm!:FormGroup;
+  registrationResponse: Registration | null = null;
   constructor(private fb: FormBuilder, private registrationService: RegistrationService) {
     this.registrationForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -33,8 +34,9 @@ export class RegistrationComponent {
       this.registrationService.saveRegistration(registration).subscribe({
         next: (response) => {
           console.log('Utilisateur enregistré avec succès', response);
+          this.registrationResponse = response; // Stocker la réponse dans la variable
           alert('Inscription réussie !');
-          this.registrationForm.reset();
+          //this.registrationForm.reset();
         },
         error: (error) => {
           console.error('Erreur lors de l\'inscription', error);
